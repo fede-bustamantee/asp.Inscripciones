@@ -9,11 +9,16 @@ namespace Inscripciones.Models
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-                @"Server=.\SQLEXPRESS;
-                Database=InscripcionesContext; 
-                User Id=sa; Password=1234; 
-                MultipleActiveResultSets = True; Encrypt=False");
+            //optionsBuilder.UseSqlServer(
+            //    @"Server=.\SQLEXPRESS;
+            //    Database=InscripcionesContext; 
+            //    User Id=sa; Password=1234; 
+            //    MultipleActiveResultSets = True; Encrypt=False");
+            string cadenaConexion = "Server=5.57.213.17;Database=smartsof_fedebustamante; User=smartsof_bustamante;Password=bustamantefede123";
+            optionsBuilder.UseMySql
+                (cadenaConexion,
+                ServerVersion.AutoDetect
+                (cadenaConexion));
         }
         public virtual DbSet<Alumno> alumnos { get; set; }
         public virtual DbSet<Carrera> carreras { get; set; }

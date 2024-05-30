@@ -6,11 +6,16 @@ var builder = WebApplication.CreateBuilder(args);
 var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
     .Build();
+string cadenaConexion = configuration.GetConnectionString("mysqlremoto");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<InscripcionesContext>(options => options.UseSqlServer(
-    configuration.GetConnectionString("sqlserver")));
+//builder.Services.AddDbContext<InscripcionesContext>(options => options.UseSqlServer(
+//    configuration.GetConnectionString("sqlserver")));
+
+builder.Services.AddDbContext<InscripcionesContext>(options => options.UseMySql(
+      cadenaConexion,ServerVersion.AutoDetect(cadenaConexion)));
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
