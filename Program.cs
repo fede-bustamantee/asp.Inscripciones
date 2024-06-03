@@ -14,7 +14,11 @@ builder.Services.AddControllersWithViews();
 //    configuration.GetConnectionString("sqlserver")));
 
 builder.Services.AddDbContext<InscripcionesContext>(options => options.UseMySql(
-      cadenaConexion,ServerVersion.AutoDetect(cadenaConexion)));
+      cadenaConexion,ServerVersion.AutoDetect(cadenaConexion),
+      options => options.EnableRetryOnFailure(
+                                        maxRetryCount: 5,
+                                        maxRetryDelay: System.TimeSpan.FromSeconds(30),
+                                       errorNumbersToAdd: null)));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
