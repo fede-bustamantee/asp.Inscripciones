@@ -48,8 +48,8 @@ namespace Inscripciones.Controllers
         // GET: Inscripciones/Create
         public IActionResult Create()
         {
-            ViewData["AlumnoId"] = new SelectList(_context.alumnos, "Id", "ApellidoNombre");
-            ViewData["CarreraId"] = new SelectList(_context.carreras, "Id", "Nombre");
+            ViewData["Alumnos"] = new SelectList(_context.alumnos, "Id", "ApellidoNombre");
+            ViewData["Carreras"] = new SelectList(_context.carreras, "Id", "Nombre");
             return View();
         }
 
@@ -84,8 +84,8 @@ namespace Inscripciones.Controllers
             {
                 return NotFound();
             }
-            ViewData["AlumnoId"] = new SelectList(_context.alumnos, "Id", "ApellidoNombre", inscripcion.AlumnoId);
-            ViewData["CarreraId"] = new SelectList(_context.carreras, "Id", "Nombre", inscripcion.CarreraId);
+            ViewData["Alumno"] = new SelectList(_context.alumnos, "Id", "ApellidoNombre", inscripcion.AlumnoId);
+            ViewData["Carrera"] = new SelectList(_context.carreras, "Id", "Nombre", inscripcion.CarreraId);
             return View(inscripcion);
         }
 
