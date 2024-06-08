@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Inscripciones.Models.DetalleInscripcion>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Detalle Inscripciones</h1>
+
+<p>
+    <a asp-action="Create">Create Nueva</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ModalidadCursado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inscripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Materia)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModalidadCursado)
+            </td>
+            <td>
+                @item.Inscripcion.Fecha.ToString("dd/MM/yyyy")
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Materia.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

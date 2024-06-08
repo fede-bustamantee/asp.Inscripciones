@@ -4,6 +4,7 @@ using Inscripciones.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Inscripciones.Migrations
 {
     [DbContext(typeof(InscripcionesContext))]
-    partial class InscripcionesContextModelSnapshot : ModelSnapshot
+    [Migration("20240608155119_AgregandoDatosSemilladeAlumno,Carrera,anioCarreraYMateria")]
+    partial class AgregandoDatosSemilladeAlumnoCarreraanioCarreraYMateria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -389,32 +392,6 @@ namespace Inscripciones.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Inscripciones.Models.DetalleInscripcion", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("InscripcionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MateriaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ModalidadCursado")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("InscripcionId");
-
-                    b.HasIndex("MateriaId");
-
-                    b.ToTable("detalleInscripcion");
-                });
-
             modelBuilder.Entity("Inscripciones.Models.Inscripcion", b =>
                 {
                     b.Property<int>("Id")
@@ -708,25 +685,6 @@ namespace Inscripciones.Migrations
                         .IsRequired();
 
                     b.Navigation("Carrera");
-                });
-
-            modelBuilder.Entity("Inscripciones.Models.DetalleInscripcion", b =>
-                {
-                    b.HasOne("Inscripciones.Models.Inscripcion", "Inscripcion")
-                        .WithMany()
-                        .HasForeignKey("InscripcionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Inscripciones.Models.Materia", "Materia")
-                        .WithMany()
-                        .HasForeignKey("MateriaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Inscripcion");
-
-                    b.Navigation("Materia");
                 });
 
             modelBuilder.Entity("Inscripciones.Models.Inscripcion", b =>

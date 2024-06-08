@@ -1,0 +1,39 @@
+﻿@model Inscripciones.Models.DetalleInscripcion
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminar</h1>
+
+<h3>Estas seguro que deseas eliminar?</h3>
+<div>
+    <h4>DetalleInscripcion</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ModalidadCursado)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ModalidadCursado)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Inscripcion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Inscripcion.Fecha.ToString("dd/MM/yyyy")
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Materia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Materia.Nombre)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Elminar" class="btn btn-danger" /> |
+        <a asp-action="Index">Volver a la lista</a>
+    </form>
+</div>

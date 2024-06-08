@@ -1,4 +1,4 @@
-﻿@model Inscripciones.Models.Inscripcion
+﻿@model Inscripciones.Models.AnioCarrera
 
 @{
     ViewData["Title"] = "Delete";
@@ -6,22 +6,16 @@
 
 <h1>Eliminar</h1>
 
-<h3>Estas seguro que deseas Eliminar?<h3>
+<h3>Estas seguro que deseas eliminar?</h3>
 <div>
-    <h4>Inscripcion</h4>
+    <h4>Año Carrera</h4>
     <hr />
-    <div class="row">
+    <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Fecha)
+            @Html.DisplayNameFor(model => model.Nombre)
         </dt>
         <dd class = "col-sm-10">
-            @Model.Fecha.ToString("dd/MM/yyyy")
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Alumno)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Alumno.ApellidoNombre)
+            @Html.DisplayFor(model => model.Nombre)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Carrera)
@@ -29,11 +23,11 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Carrera.Nombre)
         </dd>
-    </div>
+    </dl>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-        <a asp-action="Index">Volver a la Lista</a>
+        <a asp-action="Index">Volver a la lista</a>
     </form>
 </div>
