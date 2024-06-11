@@ -24,6 +24,16 @@ namespace Inscripciones.Controllers
             var inscripcionesContext = _context.materia.Include(m => m.AnioCarrera);
             return View(await inscripcionesContext.ToListAsync());
         }
+        // GET: Materias
+        public async Task<IActionResult> IndexPorAnio(int? idanio = 1)
+        {
+            ViewData["AniosCarreras"] = new SelectList(_context.aniocarreras.Include(a => a.Carrera), "Id", "AñoYCarrera");
+            ViewData["IdAnio"] = idanio;
+            var inscripcionesContext = _context.materia.Include(m => m.AnioCarrera).ThenInclude(a=>a.Carrera).
+                Where(m=>m.AnioCarreraId.Equals(idanio));
+            return View(await inscripcionesContext.ToListAsync());
+        }
+
 
         // GET: Materias/Details/5
         public async Task<IActionResult> Details(int? id)

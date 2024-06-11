@@ -16,7 +16,7 @@
                 @Html.DisplayNameFor(model => model.ModalidadCursado)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Inscripcion)
+                @Html.DisplayNameFor(model => model.Inscripcion.Alumno)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Materia)
@@ -31,8 +31,7 @@
                 @Html.DisplayFor(modelItem => item.ModalidadCursado)
             </td>
             <td>
-                @item.Inscripcion.Fecha.ToString("dd/MM/yyyy")
-
+                @Html.DisplayFor(modelItem => item.Inscripcion.Alumno.ApellidoNombre)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Materia.Nombre)
