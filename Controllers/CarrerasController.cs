@@ -23,7 +23,6 @@ namespace Inscripciones.Controllers
         {
             return View(await _context.carreras.ToListAsync());
         }
-
         // GET: Carreras/Details/5
         public async Task<IActionResult> Details(int? id)
         {

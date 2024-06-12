@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Inscripciones.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace Inscripciones.Controllers
 {
@@ -22,6 +23,15 @@ namespace Inscripciones.Controllers
         public async Task<IActionResult> Index()
         {
             var inscripcionesContext = _context.aniocarreras.Include(a => a.Carrera);
+            return View(await inscripcionesContext.ToListAsync());
+        }
+
+        // GET: AnioCarrerasPorCarrera
+        public async Task<IActionResult> IndexPorCarrera(int? idcarrera = 1)
+        {
+            ViewData["Carreras"] = new SelectList(_context.carreras, "Id", "Carreras");
+            ViewData["IdCarrera"] = idcarrera;
+            var inscripcionesContext = _context.aniocarreras.Include(a => a.Carrera).Where(m=>m.CarreraId.Equals(idcarrera));
             return View(await inscripcionesContext.ToListAsync());
         }
 

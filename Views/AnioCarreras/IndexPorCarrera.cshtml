@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Inscripciones.Models.AnioCarrera>
+
+@{
+    ViewData["Title"] = "Index";
+    int idcarrera = ViewBag.IdCarrera;
+}
+
+<h1>Mostrando Años de la carrera seleccionado</h1>
+
+<p>
+    <a asp-action="Create">Crear Nuevo</a>
+</p>
+
+<form asp-controller="AnioCarreras" asp-action="IndexPorCarrera" method="get">
+    <div class="form-group">
+        <label asp-for="@idcarrera" class="control-label"></label>
+        <select asp-for="@idcarrera" class="form-control" asp-items="ViewBag.Carreras" onchange="this.form.submit()"></select>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Carrera)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Carrera.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
