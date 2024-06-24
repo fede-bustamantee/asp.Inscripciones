@@ -29,7 +29,7 @@ namespace Inscripciones.Controllers
         // GET: AnioCarrerasPorCarrera
         public async Task<IActionResult> IndexPorCarrera(int? idcarrera = 1)
         {
-            ViewData["Carreras"] = new SelectList(_context.carreras, "Id", "Carreras");
+            ViewData["Carreras"] = new SelectList(_context.carreras, "Id", "Nombre",idcarrera);
             ViewData["IdCarrera"] = idcarrera;
             var inscripcionesContext = _context.aniocarreras.Include(a => a.Carrera).Where(m=>m.CarreraId.Equals(idcarrera));
             return View(await inscripcionesContext.ToListAsync());

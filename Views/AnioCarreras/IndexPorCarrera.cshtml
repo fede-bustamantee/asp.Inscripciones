@@ -39,11 +39,13 @@
                 @Html.DisplayFor(modelItem => item.Carrera.Nombre)
             </td>
             <td>
+                <a asp-controller="Materias" asp-action="IndexPorAnio" asp-route-idanio="@item.Id">Materias</a>
                 <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
             </td>
         </tr>
 }
+        <a asp-controller="Carreras" asp-action="Index">Volver</a>
     </tbody>
 </table>
