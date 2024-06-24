@@ -60,7 +60,12 @@ namespace Inscripciones.Controllers
             ViewData["Carreras"] = new SelectList(_context.carreras, "Id", "Nombre");
             return View();
         }
-
+        public IActionResult CreateConCarrera(int? idcarrera)
+        {
+            ViewData["Carreras"] = new SelectList(_context.carreras, "Id", "Nombre", idcarrera);
+            ViewData["IdCarrera"] = idcarrera;
+            return View();
+        }
         // POST: AnioCarreras/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.

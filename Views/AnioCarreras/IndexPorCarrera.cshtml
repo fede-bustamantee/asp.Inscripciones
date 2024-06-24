@@ -8,13 +8,13 @@
 <h1>Mostrando Años de la carrera seleccionado</h1>
 
 <p>
-    <a asp-action="Create">Crear Nuevo</a>
+    <a asp-action="CreateConCarrera" asp-route-idcarrera="@idcarrera">Crear Nuevo</a>
 </p>
 
 <form asp-controller="AnioCarreras" asp-action="IndexPorCarrera" method="get">
     <div class="form-group">
         <label asp-for="@idcarrera" class="control-label"></label>
-        <select asp-for="@idcarrera" class="form-control" asp-items="ViewBag.Carreras" onchange="this.form.submit()"></select>
+        <select asp-for="@idcarrera" disabled class="form-control" asp-items="ViewBag.Carreras" onchange="this.form.submit()"></select>
     </div>
 </form>
 <table class="table">

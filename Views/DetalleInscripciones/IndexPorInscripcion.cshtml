@@ -8,7 +8,7 @@
 <h1>Detalle Inscripciones</h1>
 
 <p>
-    <a asp-action="CreateConInscripcion" asp-route-idinscripcion="@idinscripcion">Crear Nuevo</a>
+    <a asp-action="CreateConInscripcion" asp-route-idinscripcion="@idinscripcion">Create New</a>
 </p>
 
 <form asp-controller="DetalleInscripciones" asp-action="IndexPorInscripcion">
@@ -40,7 +40,7 @@
                 @Html.DisplayFor(modelItem => item.ModalidadCursado)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Materia.AnioCarrera.AñoYCarrera)
+                @Html.DisplayFor(modelItem => item.Materia.AnioCarrera.Nombre)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Materia.Nombre)

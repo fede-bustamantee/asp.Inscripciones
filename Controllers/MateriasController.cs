@@ -61,7 +61,12 @@ namespace Inscripciones.Controllers
             ViewData["AnioCarreras"] = new SelectList(_context.aniocarreras, "Id", "Nombre");
             return View();
         }
-
+        public IActionResult CreateConAnio(int? idanio)
+        {
+            ViewData["AniosCarreras"] = new SelectList(_context.aniocarreras.Include(a => a.Carrera), "Id", "AñoYCarrera", idanio);
+            ViewData["IdAnio"] = idanio;
+            return View();
+        }
         // POST: Materias/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.

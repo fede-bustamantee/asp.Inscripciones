@@ -9,13 +9,13 @@
 <h1>Mostrando materias del año seleccionado</h1>
 
 <p>
-    <a asp-action="Create">Crear Nueva</a>
+    <a asp-action="CreateConAnio" asp-route-idanio="@idanio">Crear Nuevo</a>
 </p>
 
 <form asp-controller="Materias" asp-action="IndexPorAnio" method="get">
     <div class="form-group">
         <label asp-for="@idanio" class="control-label"></label>
-        <select asp-for="@idanio" class="form-control" asp-items="ViewBag.AniosCarreras" onchange="this.form.submit()"></select>
+        <select asp-for="@idanio" disabled class="form-control" asp-items="ViewBag.AniosCarreras" onchange="this.form.submit()"></select>
     </div>
 </form>
 
