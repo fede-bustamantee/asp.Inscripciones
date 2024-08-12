@@ -1,3 +1,4 @@
+using Inscripciones.DataContext;
 using Inscripciones.Models;
 using Microsoft.EntityFrameworkCore;
 

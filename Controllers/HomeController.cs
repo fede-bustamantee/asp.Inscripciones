@@ -23,16 +23,10 @@ namespace Inscripciones.Controllers
             return View();
         }
 
-        public IActionResult Aniversario()
+        public IActionResult Aniversario35()
         {
             return View();
         }
-
-        public IActionResult Actividades()
-        {
-            return View();
-        }
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
