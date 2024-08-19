@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Inscripciones.Models;
+using Inscripciones.Models.Commons;
 using Inscripciones.DataContext;
 
 
@@ -98,8 +99,7 @@ namespace Inscripciones.ApiControllers.Commons
             {
                 return NotFound();
             }
-
-            _context.materias.Remove(materia);
+            _context.materias.Update(materia);
             await _context.SaveChangesAsync();
 
             return NoContent();
